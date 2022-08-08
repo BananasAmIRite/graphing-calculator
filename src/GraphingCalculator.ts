@@ -37,4 +37,8 @@ export default class GraphingCalculator {
       ...options,
     });
   }
+
+  public getRenderer() {
+    return this.renderer;
+  }
 }
