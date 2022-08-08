@@ -56,8 +56,13 @@ export default class GraphingCalculatorRenderer {
     for (const func of this.calculator.getFunctions()) {
       ctx.beginPath();
       let isLastPointConnected = false;
-      for (let x = leftNumX; x < rightNumX; x += this.renderingAccuracy) {
-        const point = this.calcStrokePoint(ctx, x, func(x));
+
+      for (
+        let x = func.useBounds ? Math.max(leftNumX, func.lowerBound) : leftNumX;
+        x < (func.useBounds ? Math.min(rightNumX, func.upperBound) : rightNumX);
+        x += this.renderingAccuracy
+      ) {
+        const point = this.calcStrokePoint(ctx, x, func.function(x));
         if (!point) {
           isLastPointConnected = false;
           continue;

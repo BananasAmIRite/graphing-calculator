@@ -10,4 +10,8 @@ for (let i = 0; i < 10; i++) {
 }
 
 // @ts-ignore
-window.graphingCalculator = new GraphingCalculator(elem, [(x) => Math.floor(x), (x) => Math.ceil(x)]);
+const graphingCalculator = new GraphingCalculator(elem);
+
+for (const a of arr) {
+  graphingCalculator.addFunction(a, { useBounds: true, lowerBound: 0, upperBound: 10 });
+}
